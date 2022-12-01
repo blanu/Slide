@@ -154,13 +154,13 @@ Any encrypted messages should be marked with "\[Encrypted with Slide\]".
 
 ## Explanation of Cryptographic Operations
 
-The P256 elliptic curve (EC) is used for generating the shared secret by means of elliptic curve Diffie-Helman (ECDH) key agreement. P256 was chosen because it is common to all platforms and does not require 
-additional libraries. On iOS and macOS devices, only P256 keys can be stored in the Secure Enclave, making it the most suitable choice of curve in terms of being commonly available and well-supported. On 
+The P-256 elliptic curve (EC) is used for generating the shared secret by means of elliptic curve Diffie-Helman (ECDH) key agreement. P-256 was chosen because it is common to all platforms and does not require 
+additional libraries. On iOS and macOS devices, only P-256 keys can be stored in the Secure Enclave, making it the most suitable choice of curve in terms of being commonly available and well-supported. On 
 Android, unfortunately, most devices do not have a secure enclave and for many versions of Android the KeyStore can only do public key operations for RSA keys. While newer versions of Android documentation 
 states support for elliptic curve keys in the KeyStore, those are only signing keys and cannot be used for ECDH key agreement. Even if Android does eventually support EC keys in the KeyStore, since most 
 Android devices use older versions, the only practical option for using the KeyStore on Android is to use RSA keys. As these are no longer considered a good option according to cryptography best practices, 
-compatibility with the Android KeyStore was eliminated from consideration as a criteria. Many cryptographers also have their own opinions about which curves are best and not everyone prefers P256 keys. 
-However, no actual attacks have been demonstrated to show that P256 keys are insecure. Therefore, due to common availability and Secure Enclave support on Apple devices, they are the most suitable choice at 
+compatibility with the Android KeyStore was eliminated from consideration as a criteria. Many cryptographers also have their own opinions about which curves are best and not everyone prefers P-256 keys. 
+However, no actual attacks have been demonstrated to show that P-256 keys are insecure. Therefore, due to common availability and Secure Enclave support on Apple devices, they are the most suitable choice at 
 this time.
 
 The AES-256 cipher in GCM mode, supporting “authenticated encryption with associated data” (AEAD) is used as the encryption cipher. This is a commonly available cipher that is available on all platforms and 
