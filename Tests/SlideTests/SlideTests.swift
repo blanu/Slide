@@ -1,11 +1,18 @@
 import XCTest
 @testable import Slide
 
-final class SlideTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Slide().text, "Hello, World!")
+import KeychainLinux
+import KeychainTypes
+
+final class SlideTests: XCTestCase
+{
+    func testKeys() throws
+    {
+        let privateKey = try PrivateKey(type: .P256KeyAgreement)
+        let publicKey = privateKey.publicKey
+
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(publicKey)
+        print(data.string)
     }
 }
